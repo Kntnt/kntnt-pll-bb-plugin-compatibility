@@ -5,7 +5,7 @@
  * Plugin Name:       Polylang and Beaver Builder Page Builder compatibility plugin
  * Plugin URI:        https://www.kntnt.com/
  * Description:       Makes Polylang compatible with Beaver Builder Page Builder.
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Thomas Barregren
  * Author URI:        https://www.kntnt.com/
  * License:           GPL-3.0+
@@ -20,14 +20,13 @@ defined( 'ABSPATH' ) && new Plugin;
 final class Plugin {
 
     public function __construct() {
-        add_action( 'init', [ $this, 'run' ] );
+        add_action( 'plugins_loaded', [ $this, 'run' ] );
     }
 
     public function run() {
-        if ( function_exists( 'pll_current_language' ) ) {
+        if ( class_exists( 'FLBuilderLoader' ) && class_exists( 'PLL_FLBuilder' ) ) {
             add_filter( 'fl_builder_loop_query_args', [ $this, 'fl_builder_loop_query_args' ] );
             add_filter( 'rewrite_rules_array', [ $this, 'rewrite_rules_array' ] );
-
         };
     }
 

@@ -35,7 +35,7 @@ final class Plugin {
         return $args;
     }
 
-    // Beaver builder add its rewrite rules to $wp_rewrite->extra_rules_top
+    // Beaver Builder add its rewrite rules to $wp_rewrite->extra_rules_top
     // which isn't processed by PLL_Links_Directory->rewrite_rules(). This
     // function extracts the  extra rules added to the top and process them
     // the same way as Polylang does.
